@@ -1,17 +1,15 @@
 import os
+import json
 
 
-tab_list = []
 tabs = {}
 
 book_list = []
 
 def get_tabs():
 
-    with open('notes.txt', 'r', encoding="utf-8") as f:
-        for line in f:
-            tab_list = line.split(": ")        
-            tabs[tab_list[0]] = int(tab_list[1])
+    with open('D:/PyProject/reader_pdf/notes.json', 'r', encoding="utf-8") as f:
+        tabs = json.load(f)
 
     return tabs
 
@@ -25,7 +23,7 @@ def get_book_list():
     return book_list
 
 
-def save():
-    with open('notes.txt', 'w', encoding="utf-8") as f:
-        for tab in tabs:
-            f.write(tab + ": " + str(tabs[tab]) + "\n")
+def save(tabs):
+    with open('D:/PyProject/reader_pdf/notes.json', 'w', encoding="utf-8") as f:
+        json.dump(tabs, f, indent=2, ensure_ascii=False)
+

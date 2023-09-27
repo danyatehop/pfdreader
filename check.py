@@ -24,7 +24,7 @@ def check_list():
         tabs.pop(elem, None)
 
 
-    methods.save()
+    methods.save(tabs)
 
     res = [book_list, tabs]
 

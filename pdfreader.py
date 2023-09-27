@@ -8,6 +8,8 @@ from PyPDF2 import PdfReader
 
 res_check = check.check_list()
 
+tabs = res_check[1]
+
 book = choice.book_choice(res_check[0])
 
 reader = PdfReader(f"D:\PyProject\\reader_pdf\\books\\{book}")
@@ -26,17 +28,17 @@ def render_text():
 def right():
     global num_page
     num_page+=1
-    res_check[1][book] = num_page
+    tabs[book] = num_page
     render_text()
-    methods.save()
+    methods.save(tabs)
 
 
 def left():
     global num_page
     num_page-=1
-    res_check[1][book] = num_page
+    tabs[book] = num_page
     render_text()
-    methods.save()
+    methods.save(tabs)
 
 
 keyboard.add_hotkey("right", right)
@@ -49,4 +51,4 @@ if __name__ == "__main__":
 
 keyboard.wait('esc')
 
-methods.save()
+methods.save(tabs)
